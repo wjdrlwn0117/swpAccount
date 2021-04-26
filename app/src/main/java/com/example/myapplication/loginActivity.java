@@ -15,7 +15,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class MainActivity extends AppCompatActivity {
+public class loginActivity extends AppCompatActivity {
     private EditText emailLogin;
     private EditText emailPw;
     FirebaseAuth firebaseAuth;
@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
         Button join = (Button) findViewById(R.id.registerBtn);
         Button login = (Button) findViewById(R.id.Login);
@@ -39,14 +39,14 @@ public class MainActivity extends AppCompatActivity {
                 String pwd = emailPw.getText().toString().trim();
 
                 firebaseAuth.signInWithEmailAndPassword(email, pwd)
-                        .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
+                        .addOnCompleteListener(loginActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-                                    Intent intent = new Intent(MainActivity.this, profileActivity.class);
+                                    Intent intent = new Intent(loginActivity.this, profileActivity.class);
                                     startActivity(intent);
                                 } else {
-                                    Toast.makeText(MainActivity.this, "로그인 오류", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(loginActivity.this, "로그인 오류", Toast.LENGTH_SHORT).show();
 
                                 }
                             }
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         join.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, registerActivity.class);
+                Intent intent = new Intent(loginActivity.this, registerActivity.class);
                 startActivity(intent);
                 finish();
             }

@@ -177,7 +177,7 @@ public class registerActivity extends AppCompatActivity {
                                         mDatabase.getReference().child("users").child(uid).setValue(userModel);
                                     }
                                 });
-                                Intent intent = new Intent(registerActivity.this, MainActivity.class);
+                                Intent intent = new Intent(registerActivity.this, loginActivity.class);
                                 Toast.makeText(registerActivity.this, "회원가입에 성공하였습니다.", Toast.LENGTH_SHORT).show();
                                 startActivity(intent);
                             } else {
